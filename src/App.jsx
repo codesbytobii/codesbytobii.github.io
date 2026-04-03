@@ -27,7 +27,7 @@ function Layout() {
       <Navbar />
       <main>
         <Routes>
-          {/* <Route path="/Portfolio" element={<Navigate to="/" replace />} /> */}
+          <Route path="/Portfolio" element={<Navigate to="/" replace />} />
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/work" element={<Work />} />
