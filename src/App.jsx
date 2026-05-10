@@ -9,6 +9,7 @@ import Work from "./pages/Work";
 import WorkSingle from "./pages/WorkSingle";
 import Pricing from "./pages/Pricing";
 import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
 import BlogSingle from "./pages/BlogSingle";
 import NotFound from "./pages/NotFound";
 
@@ -21,8 +22,6 @@ function ScrollToTop() {
 function Layout() {
   return (
     <>
-      {/* Noise grain overlay */}
-      <div className="noise-overlay" />
       <ScrollToTop />
       <Navbar />
       <main>
@@ -34,6 +33,7 @@ function Layout() {
           <Route path="/work/:slug" element={<WorkSingle />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/blog/:slug" element={<BlogSingle />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

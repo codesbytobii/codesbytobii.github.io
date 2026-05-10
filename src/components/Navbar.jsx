@@ -73,7 +73,7 @@ export default function Navbar() {
               )}
             </Link>
           ))}
-          <a href="/#contact" className="btn-primary" style={{ padding: "10px 22px", fontSize: "10px" }}>
+          <a href="/contact" className="btn-primary" style={{ padding: "10px 22px", fontSize: "10px" }}>
             Hire Me ↗
           </a>
           <ThemeToggle theme={theme} toggle={toggle} />

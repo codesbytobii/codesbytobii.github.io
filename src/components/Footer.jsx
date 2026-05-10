@@ -63,7 +63,7 @@ export default function Footer() {
             <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "20px" }}>Contact</p>
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               {[
-                { label: "Email", value: "contact@codesbytobi.dev" },
+                { label: "Email", value: "codesbytobi@gmail.com" },
                 { label: "Location", value: "Lagos, Nigeria" },
                 { label: "Status", value: "Open to work ✦" },
               ].map(item => (
