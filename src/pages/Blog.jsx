@@ -24,21 +24,17 @@ export default function Blog() {
       <section style={{ padding: "80px 5vw", borderBottom: "1px solid var(--border)" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <p style={{ fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "24px" }}>Featured</p>
-          <Link to={`/blog/${featured.slug}`} style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "center",
-            background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "var(--radius-md)",
-            overflow: "hidden", transition: "border-color 0.3s",
-          }}
+          <Link to={`/blog/${featured.slug}`} className="blog-featured-card"
             onMouseEnter={e => (e.currentTarget.style.borderColor = "var(--accent)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "var(--border)")}
           >
-            <div style={{ height: "360px", overflow: "hidden" }}>
+            <div className="blog-featured-image">
               <img src={featured.image} alt={featured.title} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s ease" }}
                 onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.04)")}
                 onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
               />
             </div>
-            <div style={{ padding: "0 40px 0 0" }}>
+            <div className="blog-featured-content">
               <span className="tag" style={{ marginBottom: "16px" }}>{featured.category}</span>
               <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(24px, 3vw, 40px)", color: "var(--text)", lineHeight: 1.1, marginBottom: "16px" }}>{featured.title.toUpperCase()}</h2>
               <p style={{ color: "var(--text-muted)", fontSize: "14px", lineHeight: 1.8, marginBottom: "24px" }}>{featured.excerpt}</p>
@@ -49,7 +45,6 @@ export default function Blog() {
               </div>
             </div>
           </Link>
-          <style>{`@media(max-width:768px){section>div>a{grid-template-columns:1fr!important}section>div>a>div:first-child{height:220px!important}section>div>a>div:last-child{padding:0 24px 24px!important}}`}</style>
         </div>
       </section>
 

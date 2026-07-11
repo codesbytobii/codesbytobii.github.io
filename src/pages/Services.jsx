@@ -7,7 +7,7 @@ export default function Services() {
       {/* Hero */}
       <section style={{ padding: "160px 5vw 80px", background: "var(--bg-2)", borderBottom: "1px solid var(--border)", position: "relative", overflow: "hidden" }}>
         <div className="grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.2 }} />
-        <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "end" }}>
+        <div className="services-hero-grid" style={{ maxWidth: "1200px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div>
             <p className="section-label fade-up">My Services</p>
             <h1 className="fade-up-1" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(48px, 7vw, 96px)", lineHeight: 0.92, color: "var(--text)" }}>
@@ -28,14 +28,13 @@ export default function Services() {
             </div>
           </div>
         </div>
-        <style>{`@media(max-width:768px){section>div{grid-template-columns:1fr!important}}`}</style>
       </section>
 
       {/* Services List */}
       <section style={{ padding: "120px 5vw" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           {servicePageServices.map((svc, i) => (
-            <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center", padding: "80px 0", borderBottom: "1px solid var(--border)" }}>
+            <div key={i} className="services-list-row">
               {/* Alternate layout */}
               {i % 2 === 0 ? (
                 <>
@@ -51,7 +50,6 @@ export default function Services() {
             </div>
           ))}
         </div>
-        <style>{`@media(max-width:768px){section>div>div{grid-template-columns:1fr!important;gap:40px!important}}`}</style>
       </section>
 
       <ContactSection />

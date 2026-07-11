@@ -73,7 +73,7 @@ export default function ContactSection() {
 
   return (
     <section id="contact" style={{ background: "var(--bg-2)", padding: "120px 5vw", borderTop: "1px solid var(--border)" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "80px", alignItems: "start" }}>
+      <div className="contact-grid" style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
         {/* ── Info side ── */}
         <div>
@@ -141,7 +141,7 @@ export default function ContactSection() {
               <h3 style={{ fontFamily: "var(--font-display)", fontSize: "30px", color: "var(--text)", marginBottom: "28px", letterSpacing: "0.04em" }}>SEND A MESSAGE</h3>
               <div ref={formRef} style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
+                <div className="contact-form-row">
                   {[
                     { key: "name",  placeholder: "Your name *",    type: "text" },
                     { key: "email", placeholder: "Email address *", type: "email" },
@@ -199,7 +199,6 @@ export default function ContactSection() {
       </div>
 
       <style>{`
-        @media(max-width:768px){#contact>div{grid-template-columns:1fr!important;gap:48px!important}}
         @keyframes spin{to{transform:rotate(360deg)}}
       `}</style>
     </section>

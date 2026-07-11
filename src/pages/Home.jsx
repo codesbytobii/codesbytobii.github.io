@@ -65,7 +65,7 @@ export default function Home() {
         <div style={{ position: "absolute", top: "5%", right: "-10%", width: "700px", height: "700px", borderRadius: "50%", background: "radial-gradient(circle, rgba(200,245,66,0.06) 0%, transparent 65%)", zIndex: 0, pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: "10%", left: "-5%", width: "400px", height: "400px", borderRadius: "50%", background: "radial-gradient(circle, rgba(200,245,66,0.03) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none" }} />
 
-        <div style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "center" }}>
+        <div className="home-hero-grid" style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", position: "relative", zIndex: 1 }}>
           {/* Left */}
           <div>
             <div className="fade-up" style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "24px" }}>
@@ -111,7 +111,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <style>{`@media(max-width:900px){section>div{grid-template-columns:1fr!important}}`}</style>
       </section>
 
       {/* ── Stats ticker ─────────────────────────────────── */}
@@ -125,7 +124,7 @@ export default function Home() {
 
       {/* ── Stats ─────────────────────────────────────────── */}
       <section style={{ padding: "80px 5vw", borderBottom: "1px solid var(--border)" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "1px", background: "var(--border)" }}>
+        <div className="home-stats-grid" style={{ maxWidth: "1200px", margin: "0 auto" }}>
           {stats.map(s => (
             <div key={s.label} style={{ background: "var(--bg)", textAlign: "center", padding: "40px 20px" }}>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(44px, 5vw, 72px)", color: "var(--accent)", lineHeight: 1 }}>{s.value}</div>
@@ -133,7 +132,6 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <style>{`@media(max-width:600px){section>div{grid-template-columns:repeat(2,1fr)!important}}`}</style>
       </section>
 
       {/* ── Services ──────────────────────────────────────── */}
@@ -149,7 +147,7 @@ export default function Home() {
             <Link to="/services" className="btn-outline" style={{ whiteSpace: "nowrap" }}>All Services →</Link>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px", background: "var(--border)" }}>
+          <div className="home-services-grid">
             {services.map((svc, i) => (
               <div key={i} style={{ background: "var(--bg)", padding: "40px 32px", transition: "background 0.3s, transform 0.3s", cursor: "default", position: "relative", overflow: "hidden" }}
                 onMouseEnter={e => { e.currentTarget.style.background = "var(--bg-3)"; }}
@@ -163,7 +161,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <style>{`.bg:hover .svc-line{transform:scaleX(1)!important}@media(max-width:900px){section>div>div:last-child{grid-template-columns:1fr!important}}@media(max-width:600px){section>div>div:last-child{grid-template-columns:1fr!important}}`}</style>
         </div>
       </section>
 
@@ -180,14 +177,7 @@ export default function Home() {
 
           <div style={{ display: "flex", flexDirection: "column" }}>
             {projects.map((p, i) => (
-              <div key={i} style={{
-                display: "grid", gridTemplateColumns: "72px 120px 1fr auto",
-                alignItems: "center", gap: "28px",
-                padding: "28px 0",
-                borderBottom: "1px solid var(--border)",
-                transition: "padding-left 0.35s ease",
-                cursor: "pointer",
-              }}
+              <div key={i} className="home-project-row"
                 onMouseEnter={e => (e.currentTarget.style.paddingLeft = "12px")}
                 onMouseLeave={e => (e.currentTarget.style.paddingLeft = "0")}
               >
@@ -213,13 +203,12 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <style>{`@media(max-width:768px){section>div>div:last-child>div{grid-template-columns:1fr!important}section>div>div:last-child>div>*:first-child{display:none}}`}</style>
       </section>
 
       {/* ── Skills ─────────────────────────────────────────── */}
       <section style={{ padding: "120px 5vw" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr", gap: "80px", alignItems: "start" }}>
-          <div style={{ position: "sticky", top: "100px" }}>
+        <div className="home-skills-grid" style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <div className="sticky-col" style={{ position: "sticky", top: "100px" }}>
             <p className="section-label">Expertise</p>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 5vw, 64px)", lineHeight: 1.0, color: "var(--text)", marginBottom: "24px" }}>MY SKILLS</h2>
             <p style={{ color: "var(--text-muted)", fontSize: "14px", lineHeight: 1.8 }}>A carefully curated stack built through years of shipping real products for real clients.</p>
@@ -243,7 +232,6 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <style>{`@media(max-width:768px){section>div{grid-template-columns:1fr!important}section>div>div:first-child{position:static!important}}`}</style>
       </section>
 
       <ContactSection />

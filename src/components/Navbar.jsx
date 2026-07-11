@@ -31,7 +31,7 @@ export default function Navbar() {
         height: "68px",
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 5vw",
-        background: scrolled ? "rgba(8,8,8,0.94)" : "transparent",
+        background: scrolled ? "var(--nav-bg-scrolled)" : "transparent",
         backdropFilter: scrolled ? "blur(16px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
         borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
@@ -41,14 +41,16 @@ export default function Navbar() {
         <Link to="/" style={{
           fontFamily: "var(--font-mono)", fontSize: "13px",
           letterSpacing: "0.06em", color: "var(--accent)",
-          display: "flex", alignItems: "center", gap: "6px",
+          display: "flex", alignItems: "center", gap: "8px",
         }}>
-          <span style={{
-            width: "28px", height: "28px", borderRadius: "4px",
-            background: "var(--accent)", display: "flex", alignItems: "center", justifyContent: "center",
-            color: "var(--bg)", fontWeight: 700, fontSize: "11px",
-          }}>CT</span>
-          codesbytobi
+          <img
+            src={theme === "dark" ? "/codesbytobi-light.png" : "/codesbytobi-dark.png"}
+            alt="codesbytobi logo"
+            style={{
+              width: "100px",
+              objectFit: "contain", flexShrink: 0,
+            }}
+          />
         </Link>
 
         {/* Desktop links */}
@@ -103,7 +105,7 @@ export default function Navbar() {
       {/* Mobile overlay */}
       <div style={{
         position: "fixed", inset: 0, zIndex: 190,
-        background: "rgba(8,8,8,0.98)",
+        background: "var(--nav-overlay-bg)",
         backdropFilter: "blur(20px)",
         display: "flex", flexDirection: "column",
         justifyContent: "center", alignItems: "flex-start",

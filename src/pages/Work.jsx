@@ -33,14 +33,13 @@ export default function Work() {
       </section>
 
       {/* Stats strip */}
-      <div style={{ borderBottom: "1px solid var(--border)", display: "grid", gridTemplateColumns: "repeat(4,1fr)", background: "var(--border)", gap: "1px" }}>
+      <div className="work-stats-grid" style={{ borderBottom: "1px solid var(--border)" }}>
         {stats.map(s => (
           <div key={s.label} style={{ background: "var(--bg)", padding: "32px 24px", textAlign: "center" }}>
             <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px, 4vw, 52px)", color: "var(--accent)", lineHeight: 1 }}>{s.value}</div>
             <div style={{ fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--text-muted)", marginTop: "6px" }}>{s.label}</div>
           </div>
         ))}
-        <style>{`@media(max-width:600px){div{grid-template-columns:repeat(2,1fr)!important}}`}</style>
       </div>
 
       {/* Filter tabs */}
@@ -86,7 +85,7 @@ export default function Work() {
 
       {/* Projects grid */}
       <section style={{ padding: "80px 5vw 100px" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "2px", background: filtered.length ? "var(--border)" : "transparent" }}>
+        <div className="work-projects-grid" style={{ maxWidth: "1200px", margin: "0 auto", background: filtered.length ? "var(--border)" : "transparent" }}>
           {filtered.map((p, i) => (
             <Link
               key={p.slug}
@@ -150,7 +149,6 @@ export default function Work() {
         <style>{`
           .work-card:hover .work-img { transform: scale(1.05); }
           .work-card:hover .card-arrow { opacity: 1; }
-          @media(max-width: 768px) { section > div { grid-template-columns: 1fr !important; } }
         `}</style>
       </section>
 

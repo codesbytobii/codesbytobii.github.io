@@ -25,6 +25,8 @@
   --transition-fast: 0.2s ease;
   --shadow: 0 8px 40px rgba(0,0,0,0.6);
   --shadow-accent: 0 0 40px rgba(200,245,66,0.12);
+  --nav-bg-scrolled: rgba(8,8,8,0.94);
+  --nav-overlay-bg: rgba(8,8,8,0.98);
 }
 
 /* ── Light mode overrides ── */
@@ -45,6 +47,8 @@
   --text-mid: #555552;
   --shadow: 0 8px 40px rgba(0,0,0,0.12);
   --shadow-accent: 0 0 40px rgba(90,138,0,0.1);
+  --nav-bg-scrolled: rgba(245,245,240,0.94);
+  --nav-overlay-bg: rgba(245,245,240,0.98);
 }
 
 [data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg); }
@@ -102,3 +106,82 @@ input,textarea{font-family:inherit}
 
 @media(max-width:768px){.hide-mobile{display:none!important}}
 @media(min-width:769px){.hide-desktop{display:none!important}}
+
+/* ── Responsive section grids ──────────────────────────────
+   Each page/section grid gets its own unique class here instead of
+   the old scattered <style> tags with generic selectors like
+   "section>div". Those generic selectors weren't scoped to a single
+   component instance — they matched every matching element on the
+   whole page, so one section's mobile rule could silently override
+   another section's rule (e.g. Home's Stats grid was being flattened
+   by the Skills section rule below it in the DOM). Named classes fix
+   that bleed for good. */
+
+.home-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:900px){.home-hero-grid{grid-template-columns:1fr}}
+
+.home-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+@media(max-width:600px){.home-stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+.home-services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+@media(max-width:900px){.home-services-grid{grid-template-columns:1fr}}
+
+.home-project-row{display:grid;grid-template-columns:72px 120px 1fr auto;align-items:center;gap:28px;padding:28px 0;border-bottom:1px solid var(--border);transition:padding-left .35s ease;cursor:pointer}
+@media(max-width:768px){.home-project-row{grid-template-columns:1fr}.home-project-row>*:first-child{display:none}}
+
+.home-skills-grid{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+@media(max-width:768px){.home-skills-grid{grid-template-columns:1fr}.home-skills-grid .sticky-col{position:static!important}}
+
+.services-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end}
+@media(max-width:768px){.services-hero-grid{grid-template-columns:1fr}}
+
+.services-list-row{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:80px 0;border-bottom:1px solid var(--border)}
+@media(max-width:768px){.services-list-row{grid-template-columns:1fr;gap:40px;padding:56px 0}}
+
+.work-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--border);gap:1px}
+@media(max-width:600px){.work-stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+.work-projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+@media(max-width:768px){.work-projects-grid{grid-template-columns:1fr}}
+
+.pricing-plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);align-items:stretch}
+@media(max-width:900px){.pricing-plans-grid{grid-template-columns:1fr}}
+
+.pricing-faq-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;border-bottom:1px solid var(--border);padding:24px 0;transition:padding-left .25s}
+@media(max-width:600px){.pricing-faq-row{grid-template-columns:1fr;gap:12px}}
+
+.blog-featured-card{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;transition:border-color .3s}
+.blog-featured-image{height:360px;overflow:hidden}
+.blog-featured-content{padding:0 40px 0 0}
+@media(max-width:768px){
+  .blog-featured-card{grid-template-columns:1fr}
+  .blog-featured-image{height:220px}
+  .blog-featured-content{padding:24px}
+}
+
+.worksingle-meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+@media(max-width:600px){.worksingle-meta-grid{grid-template-columns:repeat(2,1fr)}}
+
+.worksingle-body-grid{display:grid;grid-template-columns:2fr 1fr;gap:80px}
+@media(max-width:768px){.worksingle-body-grid{grid-template-columns:1fr}.worksingle-body-grid .sticky-col{position:static!important}}
+
+.worksingle-more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+@media(max-width:600px){.worksingle-more-grid{grid-template-columns:1fr}}
+
+.blogsingle-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+@media(max-width:600px){.blogsingle-related-grid{grid-template-columns:1fr}}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:start}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:48px}}
+
+.contact-form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:480px){.contact-form-row{grid-template-columns:1fr}}
+
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:48px;width:100%}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr;gap:40px}.footer-container{padding:40px 5vw 32px!important}}
+@media(max-width:480px){.footer-bottom-bar{flex-direction:column;text-align:center}}
+
+/* Sensible default so any grid item that ever forgets an explicit
+   min-width doesn't force horizontal scroll on narrow phones */
+.home-project-row,.services-list-row,.worksingle-body-grid,.contact-grid{min-width:0}
+.home-project-row>*,.services-list-row>*,.worksingle-body-grid>*,.contact-grid>*{min-width:0}

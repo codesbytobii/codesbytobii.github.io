@@ -1,8 +1,35 @@
-import { Link } from "react-router-dom";
-import { caseStudy, workProjects } from "../data/portfolio";
+// pages/WorkSingle.jsx
+import { useParams, Link } from "react-router-dom";
+import { caseStudies, projects } from "../data/portfolio";
 import ContactSection from "../components/ContactSection";
 
 export default function WorkSingle() {
+  const { slug } = useParams();
+  
+  // Find the case study by slug (since it's now an array)
+  const caseStudy = caseStudies.find(study => study.slug === slug);
+
+  // If case study not found
+  if (!caseStudy) {
+    return (
+      <div className="page-wrap" style={{ padding: "200px 5vw", textAlign: "center" }}>
+        <h1>Case Study Not Found</h1>
+        <p style={{ color: "var(--text-muted)", marginTop: "20px" }}>
+          No case study found for slug: "{slug}"
+        </p>
+        <p style={{ color: "var(--text-muted)", marginBottom: "30px" }}>
+          Available slugs: {caseStudies.map(s => s.slug).join(", ")}
+        </p>
+        <Link to="/work" className="btn-primary" style={{ display: "inline-block" }}>
+          Back to Work
+        </Link>
+      </div>
+    );
+  }
+
+  // Get other projects for "More Work" section (excluding current)
+  const otherProjects = projects.filter(p => p.slug !== caseStudy.slug).slice(0, 3);
+
   return (
     <div className="page-wrap">
       {/* Hero */}
@@ -20,7 +47,7 @@ export default function WorkSingle() {
           <p className="fade-up-1" style={{ color: "var(--text-muted)", fontSize: "16px", lineHeight: 1.8, maxWidth: "580px", marginBottom: "48px" }}>{caseStudy.subtitle}</p>
 
           {/* Meta strip */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1px", background: "var(--border)", marginBottom: "0" }}>
+          <div className="worksingle-meta-grid" style={{ marginBottom: "0" }}>
             {[
               { label: "Client",   value: caseStudy.client },
               { label: "Start",    value: caseStudy.start },
@@ -33,7 +60,6 @@ export default function WorkSingle() {
               </div>
             ))}
           </div>
-          <style>{`@media(max-width:600px){section>div>div:last-child{grid-template-columns:repeat(2,1fr)!important}}`}</style>
         </div>
       </section>
 
@@ -46,7 +72,7 @@ export default function WorkSingle() {
 
       {/* Case study body */}
       <section style={{ padding: "80px 5vw" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "2fr 1fr", gap: "80px" }}>
+        <div className="worksingle-body-grid" style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div>
             {/* Description */}
             <div style={{ marginBottom: "60px" }}>
@@ -76,7 +102,7 @@ export default function WorkSingle() {
 
           {/* Sidebar — Technologies */}
           <div>
-            <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "var(--radius-md)", padding: "32px", position: "sticky", top: "100px" }}>
+            <div className="sticky-col" style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "var(--radius-md)", padding: "32px", position: "sticky", top: "100px" }}>
               <h3 style={{ fontFamily: "var(--font-display)", fontSize: "22px", color: "var(--text)", marginBottom: "24px", letterSpacing: "0.04em" }}>TECHNOLOGIES</h3>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {caseStudy.technologies.map((t, i) => (
@@ -86,39 +112,39 @@ export default function WorkSingle() {
                   </div>
                 ))}
               </div>
-              <a href="#contact" className="btn-primary" style={{ marginTop: "28px", justifyContent: "center", width: "100%" }}>Start a Project →</a>
+              <a href="/contact" className="btn-primary" style={{ marginTop: "28px", justifyContent: "center", width: "100%" }}>Start a Project →</a>
             </div>
           </div>
         </div>
-        <style>{`@media(max-width:768px){section>div{grid-template-columns:1fr!important}}`}</style>
       </section>
 
       {/* More work */}
-      <section style={{ padding: "0 5vw 80px" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div style={{ borderTop: "1px solid var(--border)", paddingTop: "60px", marginBottom: "40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "36px", color: "var(--text)" }}>MORE WORK</h2>
-            <Link to="/work" className="btn-outline">View All →</Link>
+      {otherProjects.length > 0 && (
+        <section style={{ padding: "0 5vw 80px" }}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+            <div style={{ borderTop: "1px solid var(--border)", paddingTop: "60px", marginBottom: "40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "36px", color: "var(--text)" }}>MORE WORK</h2>
+              <Link to="/work" className="btn-outline">View All →</Link>
+            </div>
+            <div className="worksingle-more-grid">
+              {otherProjects.map((p, i) => (
+                <Link key={i} to={`/work/${p.slug}`} style={{ background: "var(--bg)", display: "block", overflow: "hidden" }}>
+                  <div style={{ height: "180px", overflow: "hidden" }}>
+                    <img src={p.image} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s ease" }}
+                      onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.06)")}
+                      onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+                    />
+                  </div>
+                  <div style={{ padding: "20px" }}>
+                    <span className="tag" style={{ marginBottom: "8px" }}>{p.category}</span>
+                    <h4 style={{ fontFamily: "var(--font-display)", fontSize: "18px", color: "var(--text)" }}>{p.title.toUpperCase()}</h4>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1px", background: "var(--border)" }}>
-            {workProjects.slice(0, 3).map((p, i) => (
-              <Link key={i} to={`/work/${p.slug}`} style={{ background: "var(--bg)", display: "block", overflow: "hidden" }}>
-                <div style={{ height: "180px", overflow: "hidden" }}>
-                  <img src={p.image} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s ease" }}
-                    onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.06)")}
-                    onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
-                  />
-                </div>
-                <div style={{ padding: "20px" }}>
-                  <span className="tag" style={{ marginBottom: "8px" }}>{p.category}</span>
-                  <h4 style={{ fontFamily: "var(--font-display)", fontSize: "18px", color: "var(--text)" }}>{p.title.toUpperCase()}</h4>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <style>{`@media(max-width:600px){section>div>div:last-child{grid-template-columns:1fr!important}}`}</style>
-        </div>
-      </section>
+        </section>
+      )}
 
       <ContactSection />
     </div>

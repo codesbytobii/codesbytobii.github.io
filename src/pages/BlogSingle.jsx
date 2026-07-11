@@ -67,7 +67,7 @@ export default function BlogSingle() {
       <section style={{ padding: "0 5vw 100px", background: "var(--bg-2)", borderTop: "1px solid var(--border)" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: "36px", color: "var(--text)", padding: "60px 0 40px" }}>MORE ARTICLES</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1px", background: "var(--border)" }}>
+          <div className="blogsingle-related-grid">
             {related.map((p, i) => (
               <Link key={i} to={`/blog/${p.slug}`} style={{ background: "var(--bg)", display: "block", overflow: "hidden", transition: "background 0.3s" }}
                 onMouseEnter={e => (e.currentTarget.style.background = "var(--bg-3)")}
@@ -86,7 +86,6 @@ export default function BlogSingle() {
               </Link>
             ))}
           </div>
-          <style>{`@media(max-width:600px){section>div>div:last-child{grid-template-columns:1fr!important}}`}</style>
         </div>
       </section>
     </div>

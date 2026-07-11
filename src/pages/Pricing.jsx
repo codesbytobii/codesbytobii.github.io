@@ -20,7 +20,7 @@ export default function Pricing() {
 
       {/* Plans */}
       <section style={{ padding: "100px 5vw" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1px", background: "var(--border)", alignItems: "stretch" }}>
+        <div className="pricing-plans-grid" style={{ maxWidth: "1200px", margin: "0 auto" }}>
           {pricingPlans.map((plan, i) => (
             <div key={i} style={{
               background: plan.highlight ? "var(--accent)" : "var(--bg)",
@@ -69,7 +69,6 @@ export default function Pricing() {
             </div>
           ))}
         </div>
-        <style>{`@media(max-width:900px){section>div{grid-template-columns:1fr!important}}`}</style>
       </section>
 
       {/* FAQ strip */}
@@ -83,7 +82,7 @@ export default function Pricing() {
               { q: "Can I request changes after delivery?",   a: "Yes. Each plan includes a set number of revision rounds. Additional revisions are billed at an hourly rate." },
               { q: "How do we get started?",                  a: "Simply reach out via the contact form below. I'll reply within 24 hours to discuss your project requirements." },
             ].map((item, i) => (
-              <div key={i} style={{ borderBottom: "1px solid var(--border)", padding: "24px 0", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", transition: "padding-left 0.25s" }}
+              <div key={i} className="pricing-faq-row"
                 onMouseEnter={e => (e.currentTarget.style.paddingLeft = "8px")}
                 onMouseLeave={e => (e.currentTarget.style.paddingLeft = "0")}
               >
@@ -92,7 +91,6 @@ export default function Pricing() {
               </div>
             ))}
           </div>
-          <style>{`@media(max-width:600px){div>div{grid-template-columns:1fr!important}}`}</style>
         </div>
       </section>
 
