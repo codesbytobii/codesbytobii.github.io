@@ -1,6 +1,6 @@
 # codesbytobi — Portfolio
 
-Personal portfolio for **Oluwatobi**, Senior Software Developer.
+Personal portfolio for **Oluwatobi**, Senior Software Engineer.
 Converted from Next.js → **Vite + React 18 + TypeScript**.
 
 ---

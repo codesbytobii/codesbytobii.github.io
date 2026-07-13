@@ -70,7 +70,7 @@ export default function Home() {
           <div>
             <div className="fade-up" style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "24px" }}>
               <span style={{ width: "28px", height: "1px", background: "var(--accent)", display: "block" }} />
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent)" }}>Software Developer</span>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent)" }}>Software Engineer</span>
             </div>
             <h1 className="fade-up-1" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(60px, 8vw, 108px)", lineHeight: 0.92, color: "var(--text)", marginBottom: "10px" }}>
               HEY, I'M<br />

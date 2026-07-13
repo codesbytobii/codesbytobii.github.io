@@ -29,7 +29,7 @@ export default function Footer() {
               codesbytobi
             </div>
             <p style={{ color: "var(--text-muted)", fontSize: "14px", lineHeight: 1.8, maxWidth: "280px", marginBottom: "28px" }}>
-              Senior software developer delivering innovative, robust web solutions tailored for the Nigerian market and beyond.
+              Senior software engineer delivering innovative, robust web solutions tailored for the Nigerian market and beyond.
             </p>
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
               {["GitHub", "LinkedIn", "Twitter"].map(s => (
