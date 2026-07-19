@@ -97,11 +97,11 @@ export default function Home() {
             <div style={{ position: "absolute", bottom: "-16px", left: "40px", width: "160px", height: "2px", background: "var(--accent)" }} />
             <div style={{ position: "absolute", top: "50%", right: "-20px", width: "2px", height: "100px", background: "linear-gradient(to bottom, transparent, var(--accent), transparent)", transform: "translateY(-50%)" }} />
 
-            <div style={{ width: "380px", height: "480px", borderRadius: "var(--radius-md)", border: "1px solid var(--border)", overflow: "hidden", position: "relative", animation: "float 6s ease-in-out infinite", boxShadow: "0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--border)" }}>
+            <div style={{ width: "380px", height: "480px", borderRadius: "var(--radius-md)", border: "1px solid var(--border)", overflow: "hidden", position: "relative", boxShadow: "0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--border)" }}>
               <img src="/oluwatobi.PNG" alt="Oluwatobi" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(8,8,8,0.7) 0%, transparent 50%)" }} />
               {/* Overlay badge */}
-              <div style={{ position: "absolute", bottom: "20px", left: "20px", background: "rgba(8,8,8,0.9)", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "10px 16px", backdropFilter: "blur(10px)" }}>
+              <div style={{ position: "absolute", bottom: "20px", left: "20px", background: "var(--bg)", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "10px 16px", backdropFilter: "blur(10px)" }}>
                 <div style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--accent)", letterSpacing: "0.12em", marginBottom: "2px" }}>STATUS</div>
                 <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text)", display: "flex", alignItems: "center", gap: "6px" }}>
                   <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
