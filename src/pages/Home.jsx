@@ -98,7 +98,7 @@ export default function Home() {
             <div style={{ position: "absolute", top: "50%", right: "-20px", width: "2px", height: "100px", background: "linear-gradient(to bottom, transparent, var(--accent), transparent)", transform: "translateY(-50%)" }} />
 
             <div style={{ width: "380px", height: "480px", borderRadius: "var(--radius-md)", border: "1px solid var(--border)", overflow: "hidden", position: "relative", boxShadow: "0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--border)" }}>
-              <img src="/oluwatobi.PNG" alt="Oluwatobi" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <img src="/IMG_5204.JPG" alt="Oluwatobi" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(8,8,8,0.7) 0%, transparent 50%)" }} />
               {/* Overlay badge */}
               <div style={{ position: "absolute", bottom: "20px", left: "20px", background: "var(--bg)", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "10px 16px", backdropFilter: "blur(10px)" }}>
